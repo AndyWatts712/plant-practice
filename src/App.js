@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import * as yup from 'yup';
 import './App.css';
-import Login from './components/Login'
-import * as yup from 'yup'
-import schema from './validation/formSchema'
+import Login from './components/Login';
+import schema from './validation/formSchema';
+import SignInSide from './material-ui/SignInSide';
 
 function App() {
   const initialFormValues = {
-    username: "",
+    email: "",
     password: ""
   }
   const initialFormErrors = {
-    username: "",
+    email: "",
     password: ""
   }
   const initialUserValue = []
@@ -47,11 +48,12 @@ function App() {
   const postNewUser = (newUser) => {
     setUser([newUser, ...users])
     setFormValues(initialFormValues)
+    console.log(users)
   }
-  
+
   const submit = () => {
     const newUser = {
-      username: formValues.username.trim(),
+      email: formValues.email.trim(),
       password: formValues.password.trim()
     }
     postNewUser(newUser)
@@ -63,13 +65,20 @@ function App() {
   })
   return (
     <div className="App">
-      <Login
+      {/* <Login
         submit={submit}
-        values={formValues} 
-        errors = {formErrors}
-        inputChange = {inputChange}
-        disabled = {disabled}
-        />
+        values={formValues}
+        errors={formErrors}
+        inputChange={inputChange}
+        disabled={disabled}
+      /> */}
+      <SignInSide
+        submit={submit}
+        values={formValues}
+        errors={formErrors}
+        inputChange={inputChange}
+        disabled={disabled}
+      />
     </div>
   );
 }
