@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import './App.css';
-import Login from './components/Login';
 import schema from './validation/formSchema';
 import SignInSide from './material-ui/SignInSide';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import pink from '@material-ui/core/colors/purple';
+import green from '@material-ui/core/colors/green';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: green,
+    secondary: pink,
+  }
+
+});
+
 
 function App() {
+
   const initialFormValues = {
     email: "",
     password: ""
@@ -64,22 +76,26 @@ function App() {
     }, [formValues])
   })
   return (
+
     <div className="App">
-      {/* <Login
+      <ThemeProvider theme={theme} >
+        {/* <Login
         submit={submit}
         values={formValues}
         errors={formErrors}
         inputChange={inputChange}
         disabled={disabled}
       /> */}
-      <SignInSide
-        submit={submit}
-        values={formValues}
-        errors={formErrors}
-        inputChange={inputChange}
-        disabled={disabled}
-      />
+        <SignInSide
+          submit={submit}
+          values={formValues}
+          errors={formErrors}
+          inputChange={inputChange}
+          disabled={disabled}
+        />
+      </ThemeProvider>
     </div>
+
   );
 }
 

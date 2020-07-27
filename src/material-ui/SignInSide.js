@@ -12,7 +12,6 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Login from '../components/Login'
 
 function Copyright() {
   return (
@@ -72,7 +71,6 @@ export default function SignInSide(props) {
     const {name, value} = evt.target
     inputChange(name, value)
 }
-
 const onSubmit = evt => {
     evt.preventDefault()
     submit()
@@ -84,7 +82,7 @@ const onSubmit = evt => {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon style={{ color: green[500] }} />
+            <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
